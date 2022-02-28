@@ -1,0 +1,81 @@
+<html>
+  <head>
+   
+    <style>
+      table,th,td{
+        border: 2px solid black;
+      }
+      table{
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th{
+        background-color: rgb(179, 230, 213);
+      }
+      th,td{
+        padding: 10px;
+      }
+      a{
+        text-decoration: none;
+      }
+      .newuser a{
+        
+        background-color: black;
+        color: rgb(255, 255, 255);
+        padding: 10px;
+        float:right;
+        font-size: 1.3em;
+        border-radius: 5px;
+        margin: 4px;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="newuser">
+      <a href="/">Add new user</a>
+    </div>
+    <table>
+      <tr>
+        <th>Sq No.</th>
+        <th>User ID</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Designation</th>
+        <th>Address</th>
+        
+       
+        <th>Phone No</th>
+        <th>Zip code</th>
+        <th>Dob</th>
+       
+        <th colspan="3">Action</th>
+        
+      </tr>
+      <%for(var i=0;i<data.length;i++){%>
+        <tr>
+          <td><%=i+1%></td>
+          <td><%=data[i].jobid %></td>
+          <td><%=data[i].fname %> <%=data[i].lname %></td>
+          <td><%=data[i].email %></td>
+          <td><%=data[i].designation %></td>
+          <td><%=data[i].add1 %></td>
+          
+        
+          <td><%=data[i].phoneno %></td>
+          <td><%=data[i].zip %></td>
+          <td><%=(data[i].dob).toLocaleDateString("en-US") %></td>
+
+          <td >
+            <a class="ed" href="/View?jobid=<%=data[i].jobid%>" style='color:blue'>View More</i></a>
+            </td>
+            <td>
+            <a class="ed" href="/Edit?jobid=<%=data[i].jobid%>" style='color:green'>Edit</i></a>
+            </td><td>
+            <a class="ed" href="/Delete?del_record=<%=data[i].jobid%>" onclick="return confirm('are you sure, you want to delete this record.?')" style='color:red'>Delete</a>
+        </td>
+        </tr>
+        <%}%>
+    </table>
+  </body>
+</html>
